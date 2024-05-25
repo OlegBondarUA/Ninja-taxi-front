@@ -13,8 +13,8 @@
           <ul class="dropdown-menu dropdown-menu-service" aria-labelledby="navbarDropdown"
             :style="{ display: showServiceDropdown ? 'block' : 'none' }" @mouseenter="showServiceDropdown = true"
             @mouseleave="showServiceDropdown = false">
-            <li><router-link to="/services/charging-stations" class="dropdown-item">Зарядні станції</router-link></li>
-            <li><router-link to="/services/pricing" class="dropdown-item">Вартість автоматизованої системи</router-link>
+            <li><router-link to="/charging-stations" class="dropdown-item">Зарядні станції</router-link></li>
+            <li><router-link to="/pricing" class="dropdown-item">Вартість автоматизованої системи</router-link>
             </li>
           </ul>
         </li>

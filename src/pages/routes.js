@@ -1,8 +1,7 @@
 import {createRouter} from 'vue-router'
 import Homepage from './home/Home.vue';
 import {SignInComponent} from './user';
-import Cart from './cart/Cart.vue';
-
+import ChargingStations from './charging-stations/ChargingStations.vue';
 const routes = [
   {
     path: '/',
@@ -10,13 +9,13 @@ const routes = [
   },
 
   {
-    path: '/sign-in/',
-    component: SignInComponent
+    path: '/charging-stations/',
+    component: ChargingStations
   },
 
   {
-    path: '/cart/',
-    component: Cart
+    path: '/sign-in/',
+    component: SignInComponent
   },
 ]
 

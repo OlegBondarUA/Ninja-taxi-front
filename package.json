@@ -10,15 +10,18 @@
   },
   "dependencies": {
     "pinia": "2.0.24",
+    "swiper": "^8.4.7",
     "vue": "3.2.45",
-    "vue-router": "4.1.6"
+    "vue-awesome-swiper": "^5.0.1",
+    "vue-router": "4.1.6",
+    "vue3-carousel": "^0.3.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "3.2.0",
-    "chromedriver": "107.0.3",
-    "geckodriver": "3.2.0",
-    "nightwatch": "2.5.1",
-    "vite": "3.2.4",
+    "chromedriver": "^125.0.2",
+    "geckodriver": "^4.4.0",
+    "nightwatch": "^3.6.3",
+    "vite": "^3.2.10",
     "vite-plugin-nightwatch": "^0.3.2"
   }
 }

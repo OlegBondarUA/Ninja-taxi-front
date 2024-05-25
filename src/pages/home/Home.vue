@@ -4,7 +4,7 @@ import Footer from '../../components/Footer.vue';
 </script>
 
 <template>
-  <div class="wrapper" @scroll="console.log('Hello')">
+  <div class="wrapper">
     <TopNavbar />
 
     <section class="home-section-one">
