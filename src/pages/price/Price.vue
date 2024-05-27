@@ -259,7 +259,6 @@ import Footer from "../../components/Footer.vue";
 
 /* Price Section Two */
 .price-section-two {
-  margin-top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -267,7 +266,7 @@ import Footer from "../../components/Footer.vue";
   width: 100%;
   height: auto;
   max-width: 1152px;
-  margin: 100px auto 0 auto;
+  margin: 0 auto;
 }
 
 .price-section-two .container {
@@ -307,6 +306,8 @@ import Footer from "../../components/Footer.vue";
 }
 
 .price-section-two .package-title {
+  width: 80%;
+  margin: 0 0 15px 0;
   font-family: var(--second-family);
   font-weight: 600;
   font-size: 32px;
@@ -326,6 +327,7 @@ import Footer from "../../components/Footer.vue";
   text-transform: uppercase;
   text-align: center;
   color: #141e17;
+  margin: 0;
 }
 
 .package:nth-child(1) .package-header p {
