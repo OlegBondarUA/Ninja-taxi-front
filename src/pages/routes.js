@@ -3,6 +3,7 @@ import Homepage from './home/Home.vue';
 import ChargingStations from './charging-stations/ChargingStations.vue';
 import Price from './price/Price.vue';
 import Investment from './investment/Investment.vue';
+import AutoPark from './auto-park/AutoPark.vue';
 
 const routes = [
   {
@@ -23,6 +24,11 @@ const routes = [
   {
     path: '/business/investors/',
     component: Investment
+  },
+
+  {
+    path: '/business/fleet-owners/',
+    component: AutoPark
   }
 ]
 
