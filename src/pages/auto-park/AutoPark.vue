@@ -193,6 +193,74 @@
       </section>
     </section>
 
+    <section class="auto-park-section-eight">
+      <div class="container">
+        <div class="box-img">
+          <img
+            src="/images-cloud/auto-park-page/park-block-8.png"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div class="description">
+          <h2>Ефективність водіїв</h2>
+          <p>
+            В дашборді ефективності водіїв власники та менеджери автопарків
+            матимуть можливість переглядати загальну активність в усіх
+            агрегаторах, а також окремо в кожному з них.
+          </p>
+          <button class="free-access-button">Співпрацювати</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="auto-park-nine-section">
+      <div class="container">
+        <div class="description">
+          <h2>Автоматичний розрахунок водія</h2>
+          <p>
+            Менеджери та власники автопарків зможуть заощаджувати час, оскільки
+            розрахунок заробітної плати водіїв автоматизований, а виплати водіям
+            швидкі та прозорі.
+          </p>
+          <button class="free-access-button">
+            Отримати безкоштовний доступ
+          </button>
+        </div>
+        <div class="box-img">
+          <img
+            src="/images-cloud/auto-park-page/park-block-9.png"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="auto-park-section-ten">
+      <div class="container">
+        <div class="box-img">
+          <img
+            src="/images-cloud/auto-park-page/park-block-10.png"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div class="description">
+          <h2>Розклад водіїв</h2>
+          <p>
+            Розклад водіїв дозволяє записувати усі робочі дні водіїв та
+            автоматично їх повторювати для кожного з них. Це сприяє правильному
+            розрахунку заробітної плати та холостого пробігу водіїв.
+          </p>
+          <a href="#">
+            <button class="get-price-button">Дізнатися вартість</button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <ConnectFormBlock />
     <Footer />
   </div>
 </template>
@@ -200,6 +268,7 @@
 <script setup>
 import TopNavbar from "../../components/TopNavbar.vue";
 import Footer from "../../components/Footer.vue";
+import ConnectFormBlock from "../../components/ConnectFormBlock.vue";
 </script>
 
 <style scoped>
@@ -768,7 +837,7 @@ import Footer from "../../components/Footer.vue";
 
 /* Section seven */
 .background-section.seven {
-  padding: 5px ;
+  padding: 5px;
 }
 .auto-park-section-seven {
   position: relative;
@@ -828,5 +897,221 @@ import Footer from "../../components/Footer.vue";
   cursor: pointer;
   border-radius: 25px;
   font-weight: 700;
+}
+
+/* Section eight */
+.auto-park-section-eight {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  max-width: 1152px;
+  margin: 100px auto 0 auto;
+}
+
+.auto-park-section-eight .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.auto-park-section-eight .container > div {
+  flex-basis: 50%;
+}
+
+.auto-park-section-eight .container .box-img {
+  width: 100%;
+  height: 100%;
+}
+
+.auto-park-section-eight .container .box-img img {
+  width: 100%;
+  height: auto;
+}
+
+.auto-park-section-eight .container .description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px;
+}
+
+.auto-park-section-eight .container .description h2 {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 36px;
+  text-transform: uppercase;
+  color: #141e17;
+  margin: 0;
+}
+
+.auto-park-section-eight .container .description p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 25px;
+  color: #38423b;
+  margin: 25px 0;
+}
+
+.auto-park-section-eight .container .description button {
+  padding: 10px 20px;
+  background-color: #ec6323;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* Section nine */
+.auto-park-nine-section {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  max-width: 1152px;
+  margin: 100px auto 0 auto;
+}
+
+.auto-park-nine-section .container {
+  display: flex;
+  align-items: center;
+  background: url("/images-cloud/auto-park-page/park-block-5-bg.png") no-repeat;
+  background-size: 80% 100%;
+  position: relative;
+}
+
+.auto-park-nine-section .container .box-img {
+  width: 65%;
+  position: absolute;
+  bottom: -22px;
+  right: -60px;
+}
+
+.auto-park-nine-section .container .box-img img {
+  width: 100%;
+  height: auto;
+}
+
+.auto-park-nine-section .container .description {
+  width: 100%;
+  padding: 167px 51px;
+}
+
+.auto-park-nine-section .container .description h2 {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 36px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.auto-park-nine-section .container .description p {
+  width: 45%;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 25px;
+  color: #fff;
+}
+
+.auto-park-nine-section .container .description button {
+  margin-top: 15px;
+  border: 5px solid #ec6323;
+  background-color: #ec6323;
+  padding: 10px 35px;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 25px;
+  font-weight: 700;
+}
+
+/* Section ten */
+.auto-park-section-ten {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  max-width: 1152px;
+  margin: 100px auto 0 auto;
+}
+
+.auto-park-section-ten .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.auto-park-section-ten .container > div {
+  flex-basis: 50%;
+}
+
+.auto-park-section-ten .container .box-img {
+  width: 100%;
+  height: 100%;
+}
+
+.auto-park-section-ten .container .box-img img {
+  width: 100%;
+  height: auto;
+}
+
+.auto-park-section-ten .container .description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px;
+}
+
+.auto-park-section-ten .container .description h2 {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 36px;
+  text-transform: uppercase;
+  color: #141e17;
+  margin: 0;
+}
+
+.auto-park-section-ten .container .description p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 25px;
+  color: #38423b;
+  margin: 25px 0;
+}
+
+.auto-park-section-ten .container .description .btn-box {
+  display: flex;
+  gap: 20px;
+}
+
+.auto-park-section-ten .container .description button {
+  padding: 10px 20px;
+  background-color: #ec6323;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  width: 408px;
+  height: 57px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 20px;
 }
 </style>
