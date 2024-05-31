@@ -90,6 +90,7 @@ body {
   list-style: none;
 }
 
+.header .nav li span,
 .header .nav li a {
   font-family: var(--font-family);
   font-weight: 400;
@@ -117,7 +118,7 @@ body {
   cursor: pointer;
 }
 
-.header .nav .nav-item:nth-child(4) a {
+.header .nav .nav-item:nth-child(4) span {
   font-family: var(--second-family);
   font-weight: 700;
   font-size: 16px;
