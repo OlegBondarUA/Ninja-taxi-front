@@ -31,10 +31,16 @@ const routes = [
     component: AutoPark
   }
 ]
-
-export default function (history) {
-  return createRouter({
-    history,
+export default function(history) {
+  const router = createRouter({
+    history: history,
     routes
-  })
+  });
+
+  router.beforeEach((to, from, next) => {
+    window.scrollTo(0, 0);
+    next();
+  });
+
+  return router;
 }

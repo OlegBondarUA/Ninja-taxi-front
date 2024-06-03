@@ -53,9 +53,9 @@
         </p>
         <div class="contact-us">
           <button class="free-access-button">Безкоштовний місяць</button>
-          <a href="#">
+          <router-link to="/pricing">
             <button class="get-price-button">Дізнатися вартість</button>
-          </a>
+          </router-link>
         </div>
       </div>
     </section>
@@ -78,9 +78,9 @@
               автомобілі та водіїв, чистий прибуток автопарку, пробіг і середню
               ефективність авто.
             </p>
-            <a href="#">
-              <button class="get-price-button">Дізнатися варість</button>
-            </a>
+            <router-link to="/pricing">
+              <button class="get-price-button">Дізнатися вартість</button>
+            </router-link>
           </div>
         </div>
       </section>
@@ -129,7 +129,9 @@
             <button class="free-access-button">
               Отримати безкоштовний доступ
             </button>
-            <button class="get-price-button">Дізнатися вартість</button>
+            <router-link to="/pricing">
+              <button class="get-price-button">Дізнатися вартість</button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -154,7 +156,9 @@
             контролем.
           </p>
           <div class="btn-box">
-            <button class="get-price-button">Дізнатися вартість</button>
+            <router-link to="/pricing">
+              <button class="get-price-button">Дізнатися вартість</button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -253,9 +257,9 @@
             автоматично їх повторювати для кожного з них. Це сприяє правильному
             розрахунку заробітної плати та холостого пробігу водіїв.
           </p>
-          <a href="#">
+          <router-link to="/pricing">
             <button class="get-price-button">Дізнатися вартість</button>
-          </a>
+          </router-link>
         </div>
       </div>
     </section>

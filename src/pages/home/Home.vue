@@ -60,7 +60,9 @@ import Footer from '../../components/Footer.vue';
               Здайте свій електрокар в оренду чи інвестуйте гроші в електро-таксі
               та отримуйте пасивний дохід від 14 000 грн щомісячно з кожного авто.
             </p>
-            <button class="learn-more-btn">Дізнатися більше</button>
+            <router-link to="/business/investors">
+              <button class="learn-more-btn">Дізнатися більше</button>
+            </router-link>
           </div>
           <div class="images-block">
             <img src="/images-cloud/index-page/index-three.png" />
@@ -82,7 +84,9 @@ import Footer from '../../components/Footer.vue';
               Збільшуйте прибуток свого таксопарку з автоматизованою системою від
               NINJA TAXI, мінімізуючи витрати та ризики
             </p>
-            <button class="learn-more-btn">Дізнатися більше</button>
+            <router-link to="/business/fleet-owners">
+              <button class="learn-more-btn">Дізнатися більше</button>
+            </router-link>
           </div>
         </div>
       </section>
@@ -97,7 +101,9 @@ import Footer from '../../components/Footer.vue';
             електромобіль. З NINJA TAXI ви можете рухатися вперед у майбутнє без
             зайвих затримок.
           </p>
-          <button class="learn-more-btn">Читати більше</button>
+          <router-link to="/charging-stations">
+            <button class="learn-more-btn">Читати більше</button>
+          </router-link>
         </div>
         <div class="images-block">
           <img src="/images-cloud/index-page/index-five.png" />
