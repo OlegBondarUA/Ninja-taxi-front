@@ -1,6 +1,14 @@
 <script setup>
+import { ref } from 'vue';
 import TopNavbar from '../../components/TopNavbar.vue';
 import Footer from '../../components/Footer.vue';
+import ContactMeForm from '../../components/ContactMeForm.vue';
+
+const showContactForm = ref(false);
+
+const toggleContactForm = () => {
+  showContactForm.value = !showContactForm.value;
+};
 </script>
 
 <template>
@@ -25,7 +33,7 @@ import Footer from '../../components/Footer.vue';
               Довірте свій автопарк та інвестиції досвідченому партнеру NINJA
               TAXI.
             </p>
-            <button class="contact-me-btm">Зв’яжіться зі мною</button>
+            <button class="contact-me-btm" @click="toggleContactForm">Зв’яжіться зі мною</button>
           </div>
         </div>
       </div>
@@ -112,6 +120,8 @@ import Footer from '../../components/Footer.vue';
     </section>
 
     <Footer />
+
+    <ContactMeForm v-if="showContactForm" @close="toggleContactForm" />
   </div>
 </template>
 
@@ -464,5 +474,29 @@ import Footer from '../../components/Footer.vue';
 .home-section-five .container .images-block img {
   width: 100%;
   height: 100%;
+}
+
+.contact-me-form {
+  background-color: #A1E8B9;
+  padding: 35px 66px 55px 66px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 62px;
+  border: solid 20px #ec6323;
+  width: 60% ;
+  height: auto;
+  z-index: 10;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9;
 }
 </style>

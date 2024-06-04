@@ -1,108 +1,115 @@
 <template>
-    <div v-if="visible" class="contact-me-form">
-        <div class="form-header">
-            <h2>Contact Me</h2>
-            <button @click="closeForm" class="close-btn">×</button>
-        </div>
-        <form @submit.prevent="submitForm">
-            <div class="form-group">
-                <label for="name">Ім'я:</label>
-                <input type="text" id="name" v-model="name" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Телефон:</label>
-                <input type="tel" id="phone" v-model="phone" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Електронна пошта:</label>
-                <input type="email" id="email" v-model="email" required>
-            </div>
-            <button type="submit" class="submit-btn">Зв'яжіться зі мною</button>
-        </form>
+  <div v-if="visible" class="contact-me-form">
+    <div class="form-header">
+      <h2>Зв’яжіться зі мною</h2>
+      <h3>Заповніть форму та наш менеджер зв'яжеться з Вами</h3>
     </div>
+    <form @submit.prevent="submitForm">
+      <div class="form-group">
+        <input type="text" id="name" placeholder="Ваше ім’я*" v-model="name" required>
+      </div>
+      <div class="form-group">
+        <input type="tel" id="phone" placeholder="Ваш номер телефону*" v-model="phone" required>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" placeholder="Ваша електронна адреса*" v-model="email" required>
+      </div>
+      <button type="submit" class="submit-btn">Зв'яжіться зі мною</button>
+    </form>
+  </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            visible: true,
-            name: '',
-            phone: '',
-            email: '',
-        };
+  data() {
+    return {
+      visible: true,
+      name: '',
+      phone: '',
+      email: '',
+    };
+  },
+  methods: {
+    closeForm() {
+      this.visible = false;
     },
-    methods: {
-        closeForm() {
-            this.visible = false;
-        },
-        submitForm() {
-            // Тут можна додати логіку для відправки даних в CRM
-            const clientData = {
-                name: this.name,
-                phone: this.phone,
-                email: this.email,
-            };
-            console.log(clientData);
-            // Наприклад, використовуючи fetch або axios для відправки даних на сервер
-            // axios.post('/api/contact', clientData).then(response => { ... })
-            this.visible = false;
-        },
+    submitForm() {
+      // Тут можна додати логіку для відправки даних в CRM
+      const clientData = {
+        name: this.name,
+        phone: this.phone,
+        email: this.email,
+      };
+      console.log(clientData);
+      // Наприклад, використовуючи fetch або axios для відправки даних на сервер
+      // axios.post('/api/contact', clientData).then(response => { ... })
+      this.visible = false;
     },
+  },
 };
 </script>
 
 <style scoped>
-.contact-me-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-}
-
 .form-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 }
 
-.close-btn {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
+.form-header h2 {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 36px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #ec6323;
+  margin: 0;
+}
+
+.form-header h3 {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 25px;
+  text-align: center;
+  color: #38423b;
+  margin: 15px 0 24px 0;
 }
 
 .form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .form-group input {
-    width: calc(100% - 10px);
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+  width: 100%;
+  border-radius: 62px;
+  height: 75px;
+  padding: 0 25px;
+  border: none;
+  font-size: 25px;
+}
+
+.form-group input::placeholder {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 25px;
+  color: #53785e;
 }
 
 .submit-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  background: #ec6323;
+  border: none;
+  border-radius: 62px;
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 25px;
+  color: #fff;
 }
 
-.submit-btn:hover {
-    background-color: #0056b3;
+* {
+  box-sizing: border-box;
+
 }
 </style>
