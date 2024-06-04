@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import TopNavbar from '../../components/TopNavbar.vue';
 import Footer from '../../components/Footer.vue';
 import ContactMeForm from '../../components/ContactMeForm.vue';
@@ -9,6 +9,20 @@ const showContactForm = ref(false);
 const toggleContactForm = () => {
   showContactForm.value = !showContactForm.value;
 };
+
+const handleClickOutside = (event) => {
+  if (showContactForm.value && !event.target.closest('.contact-me-form')) {
+    showContactForm.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
 </script>
 
 <template>
@@ -33,7 +47,7 @@ const toggleContactForm = () => {
               Довірте свій автопарк та інвестиції досвідченому партнеру NINJA
               TAXI.
             </p>
-            <button class="contact-me-btm" @click="toggleContactForm">Зв’яжіться зі мною</button>
+            <button class="contact-me-btm" @click="toggleContactForm" @click.stop>Зв’яжіться зі мною</button>
           </div>
         </div>
       </div>
@@ -121,7 +135,7 @@ const toggleContactForm = () => {
 
     <Footer />
 
-    <ContactMeForm v-if="showContactForm" @close="toggleContactForm" />
+    <ContactMeForm v-if="showContactForm" />
   </div>
 </template>
 

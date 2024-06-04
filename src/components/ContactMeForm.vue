@@ -34,15 +34,12 @@ export default {
       this.visible = false;
     },
     submitForm() {
-      // Тут можна додати логіку для відправки даних в CRM
       const clientData = {
         name: this.name,
         phone: this.phone,
         email: this.email,
       };
       console.log(clientData);
-      // Наприклад, використовуючи fetch або axios для відправки даних на сервер
-      // axios.post('/api/contact', clientData).then(response => { ... })
       this.visible = false;
     },
   },
@@ -106,10 +103,5 @@ export default {
   font-weight: 700;
   font-size: 25px;
   color: #fff;
-}
-
-* {
-  box-sizing: border-box;
-
 }
 </style>
