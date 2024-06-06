@@ -270,9 +270,9 @@
 </template>
 
 <script setup>
-import TopNavbar from "../../components/TopNavbar.vue";
-import Footer from "../../components/Footer.vue";
-import ConnectFormBlock from "../../components/ConnectFormBlock.vue";
+import TopNavbar from "../components/TopNavbar.vue";
+import Footer from "../components/Footer.vue";
+import ConnectFormBlock from "../components/ConnectFormBlock.vue";
 </script>
 
 <style scoped>

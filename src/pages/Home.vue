@@ -1,8 +1,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import TopNavbar from '../../components/TopNavbar.vue';
-import Footer from '../../components/Footer.vue';
-import ContactMeForm from '../../components/ContactMeForm.vue';
+import TopNavbar from '../components/TopNavbar.vue';
+import Footer from '../components/Footer.vue';
+import ContactMeForm from '../components/ContactMeForm.vue';
 
 const showContactForm = ref(false);
 

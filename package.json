@@ -9,6 +9,7 @@
     "test": "nightwatch --env chrome --headless"
   },
   "dependencies": {
+    "axios": "^1.7.2",
     "pinia": "2.0.24",
     "swiper": "^8.4.7",
     "vue": "3.2.45",

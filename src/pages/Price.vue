@@ -207,8 +207,8 @@
 </template>
 
 <script setup>
-import TopNavbar from "../../components/TopNavbar.vue";
-import Footer from "../../components/Footer.vue";
+import TopNavbar from "../components/TopNavbar.vue";
+import Footer from "../components/Footer.vue";
 </script>
 
 <style scoped>

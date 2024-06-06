@@ -1,9 +1,9 @@
 import {createRouter} from 'vue-router'
-import Homepage from './home/Home.vue';
-import ChargingStations from './charging-stations/ChargingStations.vue';
-import Price from './price/Price.vue';
-import Investment from './investment/Investment.vue';
-import AutoPark from './auto-park/AutoPark.vue';
+import Homepage from './Home.vue';
+import ChargingStations from './ChargingStations.vue';
+import Price from './Price.vue';
+import Investment from './Investment.vue';
+import AutoPark from './AutoPark.vue';
 
 const routes = [
   {

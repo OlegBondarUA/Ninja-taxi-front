@@ -28,6 +28,13 @@
 </template>
 
 <script>
+import axios from 'axios';
+
+function getCookie(name) {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  return match ? decodeURIComponent(match[2]) : null;
+}
+
 export default {
   name: "LoginForm",
   data() {
@@ -38,10 +45,30 @@ export default {
     };
   },
   methods: {
-    handleSubmit() {
-      // Логіка для входу
-      console.log("Login:", this.login);
-      console.log("Password:", this.password);
+    async handleSubmit() {
+      try {
+        const csrfToken = getCookie('csrftoken');
+
+        const response = await axios.post('http://localhost:8000/post-request/', {
+          action: "login_invest",
+          login: this.login,
+          password: this.password
+        }, {
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
+          },
+          withCredentials: true
+        });
+
+        if (response.data.success) {
+          this.$emit('loginSuccess');
+        }
+
+        console.log('Response:', response.data['success']);
+      } catch (error) {
+        console.error('Error:', error);
+      }
     },
     toggleShowPassword() {
       this.showPassword = !this.showPassword;

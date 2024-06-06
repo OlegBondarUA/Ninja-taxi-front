@@ -49,7 +49,7 @@
         <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M32.9948 17.0047C32.9948 22.106 30.6076 26.6578 26.8752 29.5802C24.1611 31.7259 20.7224 33 16.9995 33C13.2671 33 9.82841 31.7259 7.11437 29.5802C3.38672 26.6531 0.999512 22.106 0.999512 17.0047C0.999512 8.16163 8.16115 1 17.0042 1C25.8379 1 32.9948 8.16163 32.9948 17.0047Z"
-            fill="#fff" stroke="#EC6323" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+            :fill="isLoggedIn ? '#a1e8b9' : '#fff'" stroke="#EC6323" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
           <path
             d="M23.6783 14.4942C23.6783 10.8045 20.6896 7.8157 16.9998 7.8157C13.31 7.8157 10.3213 10.8045 10.3213 14.4942C10.3213 18.184 13.31 21.1727 16.9998 21.1727C20.6896 21.1775 23.6783 18.184 23.6783 14.4942Z"
             fill="#EC6323" stroke="#EC6323" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
@@ -63,7 +63,7 @@
 
   <div v-if="showLoginModal" class="modal-overlay" @click="hideLoginModal">
     <div class="modal-content" @click.stop>
-      <LoginForm @close="hideLoginModal" />
+      <LoginForm @close="hideLoginModal" @loginSuccess="handleLoginSuccess"/>
     </div>
   </div>
 </template>
@@ -83,6 +83,7 @@ export default defineComponent({
     const showServiceDropdown = ref(false);
     const showBusinessDropdown = ref(false);
     const showIconsDropdown = ref(false);
+    const isLoggedIn = ref(false);
 
     const handleScroll = () => {
       if (headRef.value) {
@@ -116,6 +117,11 @@ export default defineComponent({
       toggleBodyOverflow(false);
     };
 
+    const handleLoginSuccess = () => {
+      isLoggedIn.value = true;
+      hideLoginModal();
+    };
+
     return {
       headRef,
       showLoginModal,
@@ -123,7 +129,9 @@ export default defineComponent({
       showBusinessDropdown,
       showIconsDropdown,
       toggleBodyOverflow,
-      hideLoginModal
+      hideLoginModal,
+      handleLoginSuccess,
+      isLoggedIn
     };
   },
 });

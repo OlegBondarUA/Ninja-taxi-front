@@ -167,8 +167,8 @@
 
 <script setup>
 import { ref } from "vue";
-import TopNavbar from "../../components/TopNavbar.vue";
-import Footer from "../../components/Footer.vue";
+import TopNavbar from "../components/TopNavbar.vue";
+import Footer from "../components/Footer.vue";
 import { Carousel, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 
