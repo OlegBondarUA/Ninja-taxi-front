@@ -49,8 +49,7 @@ export default {
       try {
         const csrfToken = getCookie('csrftoken');
 
-        const response = await axios.post('http://localhost:8000/post-request/', {
-          action: "login_invest",
+        const response = await axios.post('http://localhost:8000/login/', {
           login: this.login,
           password: this.password
         }, {
@@ -62,10 +61,15 @@ export default {
         });
 
         if (response.data.success) {
-          this.$emit('loginSuccess');
-        }
+          const token = response.data.token;
 
-        console.log('Response:', response.data['success']);
+          document.cookie = `jwt_token=${token}; path=/; max-age=${3 * 60 * 60};`;
+
+          this.$emit('loginSuccess');
+          this.$router.push('/dashboard');
+        } else {
+          console.log('Login failed:', response.data.message);
+        }
       } catch (error) {
         console.error('Error:', error);
       }

@@ -4,6 +4,7 @@ import ChargingStations from './ChargingStations.vue';
 import Price from './Price.vue';
 import Investment from './Investment.vue';
 import AutoPark from './AutoPark.vue';
+import DashboardHome from './DashboardHome.vue'
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
   {
     path: '/business/fleet-owners/',
     component: AutoPark
+  },
+
+  {
+    path: '/dashboard',
+    component: DashboardHome
   }
 ]
 export default function(history) {

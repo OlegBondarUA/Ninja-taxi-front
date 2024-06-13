@@ -9,8 +9,7 @@
       <ul class="nav me-auto">
         <li class="nav-item"><router-link to="/" class="nav-link px-2 active" aria-current="page">Головна</router-link>
         </li>
-        <li class="nav-item dropdown" @mouseenter="showServiceDropdown = true"
-          @mouseleave="showServiceDropdown = false">
+        <li class="nav-item dropdown" @mouseenter="showServiceDropdown = true" @mouseleave="showServiceDropdown = false">
           <span class="nav-link px-2" id="navbarDropdown" role="button" aria-expanded="false">Обрати послугу</span>
           <ul class="dropdown-menu dropdown-menu-service" aria-labelledby="navbarDropdown"
             :style="{ display: showServiceDropdown ? 'block' : 'none' }" @mouseenter="showServiceDropdown = true"
@@ -20,8 +19,7 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item dropdown" @mouseenter="showBusinessDropdown = true"
-          @mouseleave="showBusinessDropdown = false">
+        <li class="nav-item dropdown" @mouseenter="showBusinessDropdown = true" @mouseleave="showBusinessDropdown = false">
           <span class="nav-link px-2" id="navbarDropdownBusiness" role="button" aria-expanded="false">Для бізнесу</span>
           <ul class="dropdown-menu dropdown-menu-business" aria-labelledby="navbarDropdownBusiness"
             :style="{ display: showBusinessDropdown ? 'block' : 'none' }" @mouseenter="showBusinessDropdown = true"
@@ -45,11 +43,12 @@
           </ul>
         </li>
       </ul>
-      <div class="sing-in dropdown" @click="showLoginModal = true; toggleBodyOverflow(true)">
+      <div class="sing-in dropdown" @click="handleLoginClick">
         <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M32.9948 17.0047C32.9948 22.106 30.6076 26.6578 26.8752 29.5802C24.1611 31.7259 20.7224 33 16.9995 33C13.2671 33 9.82841 31.7259 7.11437 29.5802C3.38672 26.6531 0.999512 22.106 0.999512 17.0047C0.999512 8.16163 8.16115 1 17.0042 1C25.8379 1 32.9948 8.16163 32.9948 17.0047Z"
-            :fill="isLoggedIn ? '#a1e8b9' : '#fff'" stroke="#EC6323" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+            :fill="isLoggedIn ? '#a1e8b9' : '#fff'" stroke="#EC6323" stroke-miterlimit="10" stroke-linecap="round"
+            stroke-linejoin="round" />
           <path
             d="M23.6783 14.4942C23.6783 10.8045 20.6896 7.8157 16.9998 7.8157C13.31 7.8157 10.3213 10.8045 10.3213 14.4942C10.3213 18.184 13.31 21.1727 16.9998 21.1727C20.6896 21.1775 23.6783 18.184 23.6783 14.4942Z"
             fill="#EC6323" stroke="#EC6323" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
@@ -63,14 +62,21 @@
 
   <div v-if="showLoginModal" class="modal-overlay" @click="hideLoginModal">
     <div class="modal-content" @click.stop>
-      <LoginForm @close="hideLoginModal" @loginSuccess="handleLoginSuccess"/>
+      <LoginForm @close="hideLoginModal" @loginSuccess="handleLoginSuccess" />
     </div>
   </div>
 </template>
 
 <script>
 import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
+import axios from 'axios';
 import LoginForm from "./LoginForm.vue";
+import { useRouter } from 'vue-router';
+
+function getCookie(name) {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  return match ? decodeURIComponent(match[2]) : null;
+}
 
 export default defineComponent({
   name: "TopNavbar",
@@ -84,6 +90,14 @@ export default defineComponent({
     const showBusinessDropdown = ref(false);
     const showIconsDropdown = ref(false);
     const isLoggedIn = ref(false);
+    const router = useRouter();
+
+    const checkToken = () => {
+      const token = getCookie('jwt_token');
+      if (token) {
+        isLoggedIn.value = true;
+      }
+    };
 
     const handleScroll = () => {
       if (headRef.value) {
@@ -97,6 +111,7 @@ export default defineComponent({
     };
 
     onMounted(() => {
+      checkToken();
       window.addEventListener("scroll", handleScroll);
     });
 
@@ -122,6 +137,37 @@ export default defineComponent({
       hideLoginModal();
     };
 
+    const handleLoginClick = async () => {
+      const token = getCookie('jwt_token');
+      const csrfToken = getCookie('csrftoken');
+      if (token) {
+        try {
+          const response = await axios.post('http://localhost:8000/verify-token/', {}, {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'X-CSRFToken': csrfToken
+            },
+            withCredentials: true
+          });
+
+          if (response.data.success) {
+            isLoggedIn.value = true;
+            router.push('/dashboard');
+          } else {
+            showLoginModal.value = true;
+            toggleBodyOverflow(true);
+          }
+        } catch (error) {
+          console.error('Token verification failed:', error);
+          showLoginModal.value = true;
+          toggleBodyOverflow(true);
+        }
+      } else {
+        showLoginModal.value = true;
+        toggleBodyOverflow(true);
+      }
+    };
+
     return {
       headRef,
       showLoginModal,
@@ -131,12 +177,12 @@ export default defineComponent({
       toggleBodyOverflow,
       hideLoginModal,
       handleLoginSuccess,
+      handleLoginClick,
       isLoggedIn
     };
   },
 });
 </script>
-
 
 <style scoped>
 .fixed-top {
