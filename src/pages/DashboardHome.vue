@@ -1,38 +1,46 @@
 <template>
   <div class="wrapper">
-    <div class="sidebar">
-      <router-link to="/">
-        <img src="/images-cloud/dasboard-home-sidebar/logo.svg" alt="logo">
+    <div :class="['sidebar', { 'collapsed': isSidebarCollapsed }]">
+      <router-link :to="'/'" :class="{ 'collapsed-logo': isSidebarCollapsed }">
+        <img
+          :src="isSidebarCollapsed ? '/images-cloud/dasboard-home-sidebar/logo2.svg' : '/images-cloud/dasboard-home-sidebar/logo.svg'"
+          alt="logo">
       </router-link>
       <nav class="nav">
         <router-link to="/dashboard" class="nav-item">
           <img src="/images-cloud/dasboard-home-sidebar/house.svg" alt="house" class="nav-icon">
-          <span>Інформаційна панель</span>
+          <span v-if="!isSidebarCollapsed">Інформаційна панель</span>
         </router-link>
         <router-link to="/cars" class="nav-item">
           <img src="/images-cloud/dasboard-home-sidebar/vehicle.svg" alt="vehicle" class="nav-icon">
-          <span>Автомобілі</span>
+          <span v-if="!isSidebarCollapsed">Автомобілі</span>
         </router-link>
         <router-link to="/drivers" class="nav-item">
           <img src="/images-cloud/dasboard-home-sidebar/drivers.svg" alt="drivers" class="nav-icon">
-          <span>Водії</span>
+          <span v-if="!isSidebarCollapsed">Водії</span>
         </router-link>
         <router-link to="/fleet-management" class="nav-item">
           <img src="/images-cloud/dasboard-home-sidebar/key.svg" alt="key" class="nav-icon">
-          <span>Керування автопарком</span>
+          <span v-if="!isSidebarCollapsed">Керування автопарком</span>
         </router-link>
         <router-link to="/driver-schedule" class="nav-item">
           <img src="/images-cloud/dasboard-home-sidebar/calendar.svg" alt="calendar" class="nav-icon">
-          <span>Розклад водіїв</span>
+          <span v-if="!isSidebarCollapsed">Розклад водіїв</span>
         </router-link>
         <router-link to="/aggregator-integration" class="nav-item">
           <img src="/images-cloud/dasboard-home-sidebar/agregators.svg" alt="agregators" class="nav-icon">
-          <span>Підключення агрегаторів</span>
+          <span v-if="!isSidebarCollapsed">Підключення агрегаторів</span>
         </router-link>
       </nav>
-      <button class="logout-button" @click="logout">Вийти</button>
-      <button class="collapsing-sidebar"><img src="/images-cloud/dasboard-home-sidebar/arrows.svg"
-          alt="arrows"></button>
+      <div class="exit-btn">
+        <img v-if="isSidebarCollapsed" src="/images-cloud/dasboard-home-sidebar/exit.svg" alt="exit" class="logout-icon">
+        <button v-if="!isSidebarCollapsed" class="logout-button" @click="logout">
+          <span>Вийти</span>
+        </button>
+      </div>
+      <button :class="['collapsing-sidebar', { 'collapsed-button': isSidebarCollapsed }]" @click="toggleSidebar">
+        <img src="/images-cloud/dasboard-home-sidebar/arrows.svg" alt="arrows">
+      </button>
     </div>
     <div class="main-content">
       <header class="header">
@@ -47,10 +55,18 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isSidebarCollapsed: false
+    };
+  },
   methods: {
     logout() {
       // Логіка виходу з системи
       console.log("Вихід з системи");
+    },
+    toggleSidebar() {
+      this.isSidebarCollapsed = !this.isSidebarCollapsed;
     }
   }
 }
@@ -70,6 +86,11 @@ export default {
   justify-content: flex-start;
   padding: 20px;
   position: relative;
+  transition: width 0.3s;
+}
+
+.sidebar.collapsed {
+  width: 115px;
 }
 
 .logo {
@@ -106,6 +127,7 @@ export default {
 }
 
 .logout-button {
+  width: 100%;
   border: none;
   padding: 10px;
   cursor: pointer;
@@ -156,5 +178,29 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+.collapsing-sidebar.collapsed-button {
+  left: 50%;
+}
+
+a.collapsed-logo {
+  width: 100%;
+  height: auto;
+}
+
+a.collapsed-logo img {
+  width: 100%;
+  height: auto;
+}
+
+.exit-btn {
+  width: 100%;
+  height: auto;
+}
+
+.exit-btn img {
+  width: 50px;
+  height: auto;
 }
 </style>
