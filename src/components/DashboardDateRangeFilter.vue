@@ -92,7 +92,7 @@ export default {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: url('..//../public/images-cloud/dasboard-home-sidebar/custom-arrow.svg') no-repeat right center;
+  background: url('..//../images-cloud/dasboard-home-sidebar/custom-arrow.svg') no-repeat right center;
   background-size: 1em;
   background-position: calc(100% - 0.5em) center;
   padding-right: 2em;
