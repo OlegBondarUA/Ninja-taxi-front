@@ -33,13 +33,15 @@
         </router-link>
       </nav>
       <div class="exit-btn">
-        <img v-if="isSidebarCollapsed" src="/images-cloud/dasboard-home-sidebar/exit.svg" alt="exit" class="logout-icon">
+        <img v-if="isSidebarCollapsed" src="/images-cloud/dasboard-home-sidebar/exit.svg" alt="exit"
+          class="logout-icon">
         <button v-if="!isSidebarCollapsed" class="logout-button" @click="logout">
           <span>Вийти</span>
         </button>
       </div>
       <button :class="['collapsing-sidebar', { 'collapsed-button': isSidebarCollapsed }]" @click="toggleSidebar">
-        <img src="/images-cloud/dasboard-home-sidebar/arrows.svg" alt="arrows">
+        <img :class="{ 'rotated': !isSidebarCollapsed }" src="/images-cloud/dasboard-home-sidebar/arrows.svg"
+          alt="arrows">
       </button>
     </div>
     <div class="main-content">
@@ -47,22 +49,32 @@
         <h1>Назва автопарку</h1>
       </header>
       <div class="content">
-        <router-view></router-view>
+        <div class="page-title">
+          <h2>Інформаційна панель</h2>
+        </div>
+        <DashboardDateRangeFilter />
+        <DashboardCardContent />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import DashboardCardContent from '../components/DashboardCardContent.vue';
+import DashboardDateRangeFilter from '../components/DashboardDateRangeFilter.vue';
+
 export default {
+  components: {
+    DashboardCardContent,
+    DashboardDateRangeFilter
+  },
   data() {
     return {
-      isSidebarCollapsed: false
+      isSidebarCollapsed: true
     };
   },
   methods: {
     logout() {
-      // Логіка виходу з системи
       console.log("Вихід з системи");
     },
     toggleSidebar() {
@@ -168,12 +180,12 @@ export default {
 .collapsing-sidebar {
   position: absolute;
   border-radius: 18px;
-  width: 90px;
+  width: 35px;
   height: 37px;
   background: #a1e8b9;
   border: none;
-  left: 85%;
-  top: 37%;
+  left: 96%;
+  top: 48%;
   padding-right: 5px;
   display: flex;
   justify-content: flex-end;
@@ -181,7 +193,7 @@ export default {
 }
 
 .collapsing-sidebar.collapsed-button {
-  left: 50%;
+  left: 87%;
 }
 
 a.collapsed-logo {
@@ -202,5 +214,20 @@ a.collapsed-logo img {
 .exit-btn img {
   width: 50px;
   height: auto;
+}
+
+.page-title h2 {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 32px;
+  color: #141e17;
+}
+
+.collapsing-sidebar img {
+  transition: transform 0.3s;
+}
+
+.collapsing-sidebar img.rotated {
+  transform: rotate(180deg);
 }
 </style>
