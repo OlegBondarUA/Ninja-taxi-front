@@ -49,7 +49,7 @@ export default {
             end: 100,
             showDetail: false,
             backgroundColor: 'white',
-            bottom: 10,
+            bottom: 30,
             dataBackground: {
               lineStyle: {
                 color: 'orange',
@@ -238,6 +238,8 @@ export default {
   justify-content: center;
   margin-top: 80px;
   gap: 15px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background: rgba(194, 251, 211, 0.06);
 }
 
 .chart-title {
@@ -254,6 +256,7 @@ export default {
   color: #EC6323;
   position: relative;
   top: -55px;
+  right: 10px;
 }
 
 .chart {

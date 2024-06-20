@@ -10,6 +10,7 @@
         <DashboardDateRangeFilter />
         <DashboardCardContent />
         <DasboardChartEarningsDrivers />
+        <DasboardChartEarningsVehicle />
       </div>
     </div>
   </div>
@@ -21,6 +22,7 @@ import DashboardHeader from '../components/DashboardHeader.vue';
 import DashboardCardContent from '../components/DashboardCardContent.vue';
 import DashboardDateRangeFilter from '../components/DashboardDateRangeFilter.vue';
 import DasboardChartEarningsDrivers from '../components/DasboardChartEarningsDrivers.vue';
+import DasboardChartEarningsVehicle from '../components/DasboardChartEarningsVehicle.vue';
 
 export default {
   components: {
@@ -28,7 +30,8 @@ export default {
     DashboardHeader,
     DashboardCardContent,
     DashboardDateRangeFilter,
-    DasboardChartEarningsDrivers
+    DasboardChartEarningsDrivers,
+    DasboardChartEarningsVehicle
   }
 }
 </script>
