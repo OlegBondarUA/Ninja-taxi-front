@@ -133,7 +133,7 @@
     background: #a1e8b9;
     border: none;
     left: 96%;
-    top: 48%;
+    top: 43%;
     padding-right: 5px;
     display: flex;
     justify-content: flex-end;

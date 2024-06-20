@@ -9,6 +9,7 @@
         </div>
         <DashboardDateRangeFilter />
         <DashboardCardContent />
+        <DasboardChartEarningsDrivers />
       </div>
     </div>
   </div>
@@ -19,13 +20,15 @@ import DashboardSidebar from '../components/DashboardSidebar.vue';
 import DashboardHeader from '../components/DashboardHeader.vue';
 import DashboardCardContent from '../components/DashboardCardContent.vue';
 import DashboardDateRangeFilter from '../components/DashboardDateRangeFilter.vue';
+import DasboardChartEarningsDrivers from '../components/DasboardChartEarningsDrivers.vue';
 
 export default {
   components: {
     DashboardSidebar,
     DashboardHeader,
     DashboardCardContent,
-    DashboardDateRangeFilter
+    DashboardDateRangeFilter,
+    DasboardChartEarningsDrivers
   }
 }
 </script>
@@ -33,7 +36,7 @@ export default {
 <style scoped>
 .wrapper {
   display: flex;
-  height: 100vh;
+  height: auto;
 }
 
 .main-content {
