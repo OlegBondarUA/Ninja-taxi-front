@@ -15,7 +15,6 @@ export default {
     return {
       chartOptions: {
         grid: {
-
           height: '70%',
           top: 10,
           bottom: 120

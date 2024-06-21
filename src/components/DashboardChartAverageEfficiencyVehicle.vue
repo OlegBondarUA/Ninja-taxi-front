@@ -1,6 +1,6 @@
 <template>
   <div class="charts-card">
-    <h2 class="chart-title">Ефективність автомобіля</h2>
+    <h2 class="chart-title">Середня ефективність автомобіля</h2>
     <span class="income-dates">01.05.2024</span>
     <div ref="chart" class="chart"></div>
   </div>
@@ -10,7 +10,7 @@
 import * as echarts from 'echarts';
 
 export default {
-  name: 'DashboardChartEfficiencyVehicle',
+  name: 'DashboardChartAverageEfficiencyVehicle',
   data() {
     return {
       chartOptions: {
@@ -21,11 +21,14 @@ export default {
         },
         xAxis: {
           type: 'category',
-          boundaryGap: false,
-          data: ['2024-01-01', '2024-02-01', '2024-03-01', '2024-04-01', '2024-05-01', '2024-06-01', '2024-07-01', '2024-08-01', '2024-09-01'],
+          data: ['Автомобіль 1', 'Автомобіль 2', 'Автомобіль 3', 'Автомобіль 4', 'Автомобіль 5', 'Автомобіль 6', 'Автомобіль 7', 'Автомобіль 8', 'Автомобіль 9'],
+          axisLabel: {
+            rotate: 45
+          }
         },
         yAxis: {
-          type: 'value'
+          type: 'value',
+          max: 20, // Example value; adjust according to BusinessVehicleEfficiency
         },
         dataZoom: [
           {
@@ -55,26 +58,53 @@ export default {
         ],
         series: [
           {
-            data: [10, 20, 15, 30, 25, 35, 40, 50, 45],
-            type: 'line',
-            symbol: 'circle',
-            symbolSize: 10,
-            lineStyle: {
-              color: '#79C8C5',
-              width: 5
+            name: 'efficiency',
+            type: 'bar',
+            stack: 'total',
+            itemStyle: {
+              color: '#A1E8B9'
+            },
+            data: [10, 12, 15, 20, 18, 14, 17, 19, 13],
+            markLine: {
+              data: [
+                {
+                  yAxis: 15,
+                  name: 'Another Value',
+                  lineStyle: {color: 'green', width: 3}
+                },
+                {
+                  yAxis: 12,
+                  name: 'Another Value',
+                  lineStyle: {color: 'red', width: 3}
+                }
+              ]
+            }
+          },
+          {
+            name: 'vision_color',
+            type: 'bar',
+            stack: 'total',
+            label: {
+              focus: 'series'
             },
             itemStyle: {
-              color: '#18A64D'
+              color: '#A1E8B9',
+              borderColor: 'green',
+              borderWidth: 5
             },
-            areaStyle: {
-              color: '#A1E8B9'
-            }
-          }
+            data: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+          },
         ],
         tooltip: {
+          show: true,
           trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          },
           formatter: function (params) {
-            return 'Дата: ' + params[0].name + '<br/>' + params[0].seriesName + ' : ' + params[0].value + ' грн/км';
+            let carName = params[0].name;
+            let efficiency = params[0].value;
+            return `Автомобіль: ${carName}<br/>Ефективність: ${efficiency}`;
           }
         }
       },
