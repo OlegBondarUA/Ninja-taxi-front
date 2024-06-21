@@ -13,6 +13,7 @@
         <DashboardChartEarningsVehicle />
         <DashboardChartEfficiencyVehicle />
         <DashboardChartAverageEfficiencyVehicle />
+        <DashboardChartRunVehicle />
       </div>
     </div>
   </div>
@@ -27,6 +28,8 @@ import DashboardChartEarningsDrivers from '../components/DashboardChartEarningsD
 import DashboardChartEarningsVehicle from '../components/DashboardChartEarningsVehicle.vue';
 import DashboardChartEfficiencyVehicle from '../components/DashboardChartEfficiencyVehicle.vue';
 import DashboardChartAverageEfficiencyVehicle from '../components/DashboardChartAverageEfficiencyVehicle.vue';
+import DashboardChartRunVehicle from '../components/DashboardChartRunVehicle.vue';
+
 
 
 export default {
@@ -38,7 +41,8 @@ export default {
     DashboardChartEarningsDrivers,
     DashboardChartEarningsVehicle,
     DashboardChartEfficiencyVehicle,
-    DashboardChartAverageEfficiencyVehicle
+    DashboardChartAverageEfficiencyVehicle,
+    DashboardChartRunVehicle
   }
 }
 </script>
